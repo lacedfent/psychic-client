@@ -424,6 +424,7 @@ public class Modules extends System<Modules> {
         add(new SelfWeb());
         add(new Surround());
         add(new TriggerBot());
+        add(new WTap());
     }
 
     private void initPlayer() {
@@ -553,6 +554,7 @@ public class Modules extends System<Modules> {
         add(new Flamethrower());
         add(new HighwayBuilder());
         add(new LiquidFiller());
+        add(new MLG());
         add(new NoGhostBlocks());
         add(new Nuker());
         add(new PacketMine());
@@ -581,6 +583,7 @@ public class Modules extends System<Modules> {
         add(new Notifier());
         add(new PacketCanceller());
         add(new PacketLogger());
+        add(new Panic());
         add(new Roulette());
         add(new ServerSpoof());
         add(new SoundBlocker());
