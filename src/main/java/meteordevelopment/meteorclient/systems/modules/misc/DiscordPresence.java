@@ -142,7 +142,10 @@ public class DiscordPresence extends Module {
 
     @Override
     public void onActivate() {
-        DiscordIPC.start(1536981089585729636L, null);
+        DiscordIPC.setOnError((code, message) -> MeteorClient.LOG.error("Discord RPC error {}: {}", code, message));
+
+        boolean connected = DiscordIPC.start(1536981089585729636L, () -> MeteorClient.LOG.info("Discord RPC connected"));
+        if (!connected) MeteorClient.LOG.error("Discord RPC failed to connect to Discord");
 
         rpc.setStart(System.currentTimeMillis() / 1000L);
 
