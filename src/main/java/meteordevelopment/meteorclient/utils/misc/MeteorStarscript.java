@@ -84,8 +84,8 @@ public class MeteorStarscript {
         ss.set("time", () -> Value.string(LocalTime.now().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))));
         ss.set("cps", () -> Value.number(CPSUtils.getCpsAverage()));
 
-        // Meteor
-        ss.set("meteor", new ValueMap()
+        // Psychic
+        ss.set("psychic", new ValueMap()
             .set("name", MeteorClient.NAME)
             .set("version", MeteorClient.VERSION != null ? (MeteorClient.BUILD_NUMBER.isEmpty() ? MeteorClient.VERSION.toString() : MeteorClient.VERSION + " " + MeteorClient.BUILD_NUMBER) : "")
             .set("modules", () -> Value.number(Modules.get().getAll().size()))
@@ -347,9 +347,9 @@ public class MeteorStarscript {
     }
 
     private static Value getModuleInfo(Starscript ss, int argCount) {
-        if (argCount != 1) ss.error("meteor.get_module_info() requires 1 argument, got %d.", argCount);
+        if (argCount != 1) ss.error("psychic.get_module_info() requires 1 argument, got %d.", argCount);
 
-        Module module = Modules.get().get(ss.popString("First argument to meteor.get_module_info() needs to be a string."));
+        Module module = Modules.get().get(ss.popString("First argument to psychic.get_module_info() needs to be a string."));
         if (module != null && module.isActive()) {
             String info = module.getInfoString();
             return Value.string(info == null ? "" : info);
@@ -359,17 +359,17 @@ public class MeteorStarscript {
     }
 
     private static Value getModuleSetting(Starscript ss, int argCount) {
-        if (argCount != 2) ss.error("meteor.get_module_setting() requires 2 arguments, got %d.", argCount);
+        if (argCount != 2) ss.error("psychic.get_module_setting() requires 2 arguments, got %d.", argCount);
 
-        var settingName = ss.popString("Second argument to meteor.get_module_setting() needs to be a string.");
-        var moduleName = ss.popString("First argument to meteor.get_module_setting() needs to be a string.");
+        var settingName = ss.popString("Second argument to psychic.get_module_setting() needs to be a string.");
+        var moduleName = ss.popString("First argument to psychic.get_module_setting() needs to be a string.");
         Module module = Modules.get().get(moduleName);
         if (module == null) {
-            ss.error("Unable to get module %s for meteor.get_module_setting()", moduleName);
+            ss.error("Unable to get module %s for psychic.get_module_setting()", moduleName);
         }
         var setting = module.settings.get(settingName);
         if (setting == null) {
-            ss.error("Unable to get setting %s for module %s for meteor.get_module_setting()", settingName, moduleName);
+            ss.error("Unable to get setting %s for module %s for psychic.get_module_setting()", settingName, moduleName);
         }
         var value = setting.get();
         return switch (value) {
@@ -382,9 +382,9 @@ public class MeteorStarscript {
     }
 
     private static Value isModuleActive(Starscript ss, int argCount) {
-        if (argCount != 1) ss.error("meteor.is_module_active() requires 1 argument, got %d.", argCount);
+        if (argCount != 1) ss.error("psychic.is_module_active() requires 1 argument, got %d.", argCount);
 
-        Module module = Modules.get().get(ss.popString("First argument to meteor.is_module_active() needs to be a string."));
+        Module module = Modules.get().get(ss.popString("First argument to psychic.is_module_active() needs to be a string."));
         return Value.bool(module != null && module.isActive());
     }
 

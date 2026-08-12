@@ -131,7 +131,7 @@ listOf("api", "implementation", "include").forEach { configName ->
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/meteor-client.classtweaker")
+    accessWidenerPath = file("src/main/resources/psychic-client.classtweaker")
 }
 
 fun toMinecraftCompat(version: String): String {

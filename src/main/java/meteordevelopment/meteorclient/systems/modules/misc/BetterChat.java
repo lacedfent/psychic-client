@@ -223,7 +223,7 @@ public class BetterChat extends Module {
     private final Setting<String> suffixText = sgSuffix.add(new StringSetting.Builder()
         .name("text")
         .description("The text to add as your suffix.")
-        .defaultValue(" | meteor on crack!")
+        .defaultValue(" | psychic on crack!")
         .visible(() -> !suffixRandom.get())
         .build()
     );
@@ -416,7 +416,7 @@ public class BetterChat extends Module {
     }
 
     static {
-        registerCustomHead("[Meteor]", MeteorClient.identifier("textures/icons/chat/meteor.png"));
+        registerCustomHead("[Psychic]", MeteorClient.identifier("textures/icons/chat/psychic.png"));
         registerCustomHead("[Baritone]", MeteorClient.identifier("textures/icons/chat/baritone.png"));
     }
 

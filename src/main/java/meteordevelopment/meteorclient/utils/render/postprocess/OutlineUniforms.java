@@ -21,7 +21,7 @@ public class OutlineUniforms {
         .putFloat()
         .get();
 
-    private static final DynamicUniformStorage<Data> STORAGE = new DynamicUniformStorage<>("Meteor - Outline UBO", UNIFORM_SIZE, 16);
+    private static final DynamicUniformStorage<Data> STORAGE = new DynamicUniformStorage<>("Psychic - Outline UBO", UNIFORM_SIZE, 16);
 
     public static void flipFrame() {
         STORAGE.endFrame();

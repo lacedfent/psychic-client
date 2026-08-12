@@ -6,6 +6,7 @@
 package meteordevelopment.meteorclient.gui.screens.settings;
 
 import com.mojang.blaze3d.textures.FilterMode;
+import meteordevelopment.meteorclient.MeteorClient;
 import meteordevelopment.meteorclient.gui.GuiTheme;
 import meteordevelopment.meteorclient.gui.WindowScreen;
 import meteordevelopment.meteorclient.gui.utils.Cell;
@@ -249,7 +250,7 @@ public class EntityTypeListSettingScreen extends WindowScreen {
         if (stack != null) table.add(theme.item(stack));
         else {
             if (EMPTY_SPAWN_EGG_TEXTURE == null) {
-                EMPTY_SPAWN_EGG_TEXTURE = Texture.readResource("/assets/meteor-client/textures/empty_spawn_egg.png", false, FilterMode.NEAREST);
+                EMPTY_SPAWN_EGG_TEXTURE = Texture.readResource("/assets/" + MeteorClient.MOD_ID + "/textures/empty_spawn_egg.png", false, FilterMode.NEAREST);
             }
 
             table.add(theme.texture(32, 32, 0, EMPTY_SPAWN_EGG_TEXTURE));
