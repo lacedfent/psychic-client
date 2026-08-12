@@ -12,6 +12,8 @@ import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.utils.Utils;
 import meteordevelopment.orbit.EventHandler;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class AutoClicker extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
@@ -56,6 +58,23 @@ public class AutoClicker extends Module {
         .build()
     );
 
+    private final Setting<Boolean> randomize = sgGeneral.add(new BoolSetting.Builder()
+        .name("randomize")
+        .description("Randomizes the click delays to look less robotic.")
+        .defaultValue(true)
+        .build()
+    );
+
+    private final Setting<Integer> randomizeMax = sgGeneral.add(new IntSetting.Builder()
+        .name("randomize-max")
+        .description("The maximum extra delay in ticks added randomly.")
+        .defaultValue(2)
+        .min(0)
+        .sliderMax(10)
+        .visible(randomize::get)
+        .build()
+    );
+
     private int rightClickTimer, leftClickTimer;
 
     public AutoClicker() {
@@ -86,7 +105,8 @@ public class AutoClicker extends Module {
             case Hold -> mc.options.keyAttack.setDown(true);
             case Press -> {
                 leftClickTimer++;
-                if (leftClickTimer > leftClickDelay.get()) {
+                int extra = randomize.get() ? ThreadLocalRandom.current().nextInt(randomizeMax.get() + 1) : 0;
+                if (leftClickTimer > leftClickDelay.get() + extra) {
                     Utils.leftClick();
                     leftClickTimer = 0;
                 }
@@ -99,7 +119,8 @@ public class AutoClicker extends Module {
             case Hold -> mc.options.keyUse.setDown(true);
             case Press -> {
                 rightClickTimer++;
-                if (rightClickTimer > rightClickDelay.get()) {
+                int extra = randomize.get() ? ThreadLocalRandom.current().nextInt(randomizeMax.get() + 1) : 0;
+                if (rightClickTimer > rightClickDelay.get() + extra) {
                     Utils.rightClick();
                     rightClickTimer = 0;
                 }

@@ -393,6 +393,7 @@ public class Modules extends System<Modules> {
     }
 
     private void initCombat() {
+        add(new AimAssist());
         add(new AnchorAura());
         add(new AntiAnvil());
         add(new AntiBed());
@@ -449,6 +450,7 @@ public class Modules extends System<Modules> {
         add(new Multitask());
         add(new NameProtect());
         add(new NoInteract());
+        add(new NoJumpDelay());
         add(new NoMiningTrace());
         add(new NoRotate());
         add(new NoStatusEffects());
@@ -457,6 +459,7 @@ public class Modules extends System<Modules> {
         add(new Reach());
         add(new Rotation());
         add(new SpeedMine());
+        add(new Twerk());
     }
 
     private void initMovement() {
