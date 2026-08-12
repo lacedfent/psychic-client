@@ -29,7 +29,7 @@ public class Twerk extends Module {
     private int timer;
 
     public Twerk() {
-        super(Categories.Player, "twerk", "Rapidly presses the sneak key. Useful for auto farming sugar cane.");
+        super(Categories.Fun, "twerk", "Rapidly presses the sneak key. Useful for auto farming sugar cane.");
     }
 
     @Override
