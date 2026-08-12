@@ -104,7 +104,6 @@ public class DiscordPresence extends Module {
     );
 
     private static final RichPresence rpc = new RichPresence();
-    private SmallImage currentSmallImage;
     private int ticks;
     private boolean forceUpdate, lastWasInMainMenu;
 
@@ -143,15 +142,13 @@ public class DiscordPresence extends Module {
 
     @Override
     public void onActivate() {
-        DiscordIPC.start(835240968533049424L, null);
+        DiscordIPC.start(1536981089585729636L, null);
 
         rpc.setStart(System.currentTimeMillis() / 1000L);
 
         String largeText = "%s %s".formatted(MeteorClient.NAME, MeteorClient.VERSION);
         if (!MeteorClient.BUILD_NUMBER.isEmpty()) largeText += " Build: " + MeteorClient.BUILD_NUMBER;
-        rpc.setLargeImage("meteor_client", largeText);
-
-        currentSmallImage = SmallImage.Snail;
+        rpc.setLargeImage("psychic_client_icon", largeText);
 
         recompileLine1();
         recompileLine2();
@@ -192,15 +189,6 @@ public class DiscordPresence extends Module {
     @EventHandler
     private void onTick(TickEvent.Post event) {
         boolean update = false;
-
-        // Image
-        if (ticks >= 200 || forceUpdate) {
-            currentSmallImage = currentSmallImage.next();
-            currentSmallImage.apply();
-            update = true;
-
-            ticks = 0;
-        } else ticks++;
 
         if (Utils.canUpdate()) {
             // Line 1
@@ -291,26 +279,5 @@ public class DiscordPresence extends Module {
         help.action = () -> Util.getPlatform().openUri("https://github.com/MeteorDevelopment/meteor-client/wiki/Starscript");
 
         return help;
-    }
-
-    private enum SmallImage {
-        MineGame("minegame", "MineGame159"),
-        Snail("seasnail", "seasnail8169");
-
-        private final String key, text;
-
-        SmallImage(String key, String text) {
-            this.key = key;
-            this.text = text;
-        }
-
-        void apply() {
-            rpc.setSmallImage(key, text);
-        }
-
-        SmallImage next() {
-            if (this == MineGame) return Snail;
-            return MineGame;
-        }
     }
 }
