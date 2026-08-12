@@ -572,6 +572,7 @@ public class Modules extends System<Modules> {
         add(new AutoReconnect());
         add(new BetterBeacons());
         add(new BetterChat());
+        add(new Blackjack());
         add(new BookBot());
         add(new DiscordPresence());
         add(new InventoryTweaks());
@@ -580,6 +581,7 @@ public class Modules extends System<Modules> {
         add(new Notifier());
         add(new PacketCanceller());
         add(new PacketLogger());
+        add(new Roulette());
         add(new ServerSpoof());
         add(new SoundBlocker());
         add(new Spam());
