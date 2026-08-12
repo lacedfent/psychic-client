@@ -20,6 +20,7 @@ public class Reach extends Module {
     private final Setting<Double> blockReach = sgGeneral.add(new DoubleSetting.Builder()
         .name("extra-block-reach")
         .description("The distance to add to your block reach.")
+        .defaultValue(0.2)
         .sliderMax(1)
         .build()
     );
@@ -27,6 +28,7 @@ public class Reach extends Module {
     private final Setting<Double> entityReach = sgGeneral.add(new DoubleSetting.Builder()
         .name("extra-entity-reach")
         .description("The distance to add to your entity reach.")
+        .defaultValue(0.2)
         .sliderMax(1)
         .build()
     );

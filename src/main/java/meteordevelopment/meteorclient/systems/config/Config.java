@@ -12,6 +12,35 @@ import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.System;
 import meteordevelopment.meteorclient.systems.Systems;
 import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.meteorclient.systems.modules.combat.AnchorAura;
+import meteordevelopment.meteorclient.systems.modules.combat.BedAura;
+import meteordevelopment.meteorclient.systems.modules.combat.BowAimbot;
+import meteordevelopment.meteorclient.systems.modules.combat.BowSpam;
+import meteordevelopment.meteorclient.systems.modules.combat.Criticals;
+import meteordevelopment.meteorclient.systems.modules.combat.CrystalAura;
+import meteordevelopment.meteorclient.systems.modules.combat.Hitboxes;
+import meteordevelopment.meteorclient.systems.modules.combat.KillAura;
+import meteordevelopment.meteorclient.systems.modules.misc.swarm.Swarm;
+import meteordevelopment.meteorclient.systems.modules.movement.AirJump;
+import meteordevelopment.meteorclient.systems.modules.movement.AutoWasp;
+import meteordevelopment.meteorclient.systems.modules.movement.Blink;
+import meteordevelopment.meteorclient.systems.modules.movement.ClickTP;
+import meteordevelopment.meteorclient.systems.modules.movement.FastClimb;
+import meteordevelopment.meteorclient.systems.modules.movement.Flight;
+import meteordevelopment.meteorclient.systems.modules.movement.HighJump;
+import meteordevelopment.meteorclient.systems.modules.movement.Jesus;
+import meteordevelopment.meteorclient.systems.modules.movement.LongJump;
+import meteordevelopment.meteorclient.systems.modules.movement.Scaffold;
+import meteordevelopment.meteorclient.systems.modules.movement.Spider;
+import meteordevelopment.meteorclient.systems.modules.movement.elytrafly.ElytraFly;
+import meteordevelopment.meteorclient.systems.modules.movement.speed.Speed;
+import meteordevelopment.meteorclient.systems.modules.player.AutoClicker;
+import meteordevelopment.meteorclient.systems.modules.player.FastUse;
+import meteordevelopment.meteorclient.systems.modules.player.GhostHand;
+import meteordevelopment.meteorclient.systems.modules.player.InstantRebreak;
+import meteordevelopment.meteorclient.systems.modules.player.SpeedMine;
+import meteordevelopment.meteorclient.systems.modules.world.Nuker;
+import meteordevelopment.meteorclient.systems.modules.world.Timer;
 import meteordevelopment.meteorclient.utils.render.color.SettingColor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -136,6 +165,37 @@ public class Config extends System<Config> {
     public final Setting<List<Module>> hiddenModules = sgModules.add(new ModuleListSetting.Builder()
         .name("hidden-modules")
         .description("Prevent these modules from being rendered as options in the clickgui.")
+        .defaultValue(
+            KillAura.class,
+            CrystalAura.class,
+            BedAura.class,
+            AnchorAura.class,
+            BowAimbot.class,
+            BowSpam.class,
+            Criticals.class,
+            Hitboxes.class,
+            Flight.class,
+            ElytraFly.class,
+            Speed.class,
+            Scaffold.class,
+            Spider.class,
+            Blink.class,
+            HighJump.class,
+            LongJump.class,
+            AirJump.class,
+            Jesus.class,
+            FastClimb.class,
+            AutoWasp.class,
+            ClickTP.class,
+            AutoClicker.class,
+            FastUse.class,
+            GhostHand.class,
+            InstantRebreak.class,
+            SpeedMine.class,
+            Nuker.class,
+            Timer.class,
+            Swarm.class
+        )
         .build()
     );
 
